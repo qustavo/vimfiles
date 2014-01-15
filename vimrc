@@ -52,16 +52,20 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 
+colorscheme pablo
 if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
-   syntax on
+  syntax on
+  set background=dark
+  set t_Co=256 " 256 color mode
+  set cursorline " highlight current line
+  highlight CursorLine guibg=#003853 ctermbg=24 gui=none cterm=none " switch syntax highlighting on, when the terminal has colors
+  colors moria
 endif
-colorscheme pablo
-""
 
 " editing behaviour
 set list
-set listchars=tab:?\ ,extends:?,precedes:?
+set listchars=tab:▸\ ,extends:❯,precedes:❮
 
 " maps
 nnoremap ; :set nohlsearch!<CR>
