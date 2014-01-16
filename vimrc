@@ -83,6 +83,14 @@ cmap w!! w !sudo tee % >/dev/null " w!! for saving as root
 " Custom settings depending on FileType
 autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
 
+" Text Bubbling
+" Bubble single lines
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
+" Bubble multiple lines
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
+
 " Status bar
 set noshowmode
 set laststatus=2
