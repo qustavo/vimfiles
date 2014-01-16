@@ -87,6 +87,15 @@ autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
 set noshowmode
 set laststatus=2
 
+" NERDTree
+"
+" Q. How can I open a NERDTree automatically when vim starts up if no files were specified?
+autocmd vimenter * if !argc() | NERDTree | endif
+" Q. How can I map a specific key or shortcut to open NERDTree?
+map <C-n> :NERDTreeToggle<CR> " Ctrl-n
+" Q. How can I close vim if the only window left open is a NERDTree?
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " Vundle
 " ---
 " Vundle Requirements
