@@ -102,5 +102,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-bufferline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'majutsushi/tagbar'
+Bundle 'kchmck/vim-coffee-script'
 
 filetype plugin indent on
