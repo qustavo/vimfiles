@@ -54,13 +54,17 @@ set nofoldenable
 
 colorscheme pablo
 if &t_Co > 2 || has("gui_running")
+  colorscheme moria
+
    " switch syntax highlighting on, when the terminal has colors
   syntax on
   set background=dark
   set t_Co=256 " 256 color mode
   set cursorline " highlight current line
   highlight CursorLine guibg=#003853 ctermbg=24 gui=none cterm=none " switch syntax highlighting on, when the terminal has colors
-  colors moria
+
+  set colorcolumn=81
+  highlight ColorColumn guibg=#202020
 endif
 
 " editing behaviour
@@ -88,8 +92,9 @@ vmap <C-Down> xp`[V`]
 cmap w!! w !sudo tee % >/dev/null " w!! for saving as root
 
 " Custom settings depending on FileType
-autocmd FileType ruby   set tabstop=2|set shiftwidth=2|set expandtab
-autocmd FileType coffee set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType ruby       set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType coffee     set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
 
 " Text Bubbling
 " Bubble single lines
@@ -128,5 +133,6 @@ Bundle 'bling/vim-bufferline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'majutsushi/tagbar'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'vim-scripts/taglist.vim'
 
 filetype plugin indent on
