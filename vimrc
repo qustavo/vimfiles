@@ -88,7 +88,8 @@ vmap <C-Down> xp`[V`]
 cmap w!! w !sudo tee % >/dev/null " w!! for saving as root
 
 " Custom settings depending on FileType
-autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType ruby   set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType coffee set tabstop=2|set shiftwidth=2|set expandtab
 
 " Text Bubbling
 " Bubble single lines
