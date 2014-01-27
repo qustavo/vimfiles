@@ -133,6 +133,6 @@ Bundle 'bling/vim-bufferline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'majutsushi/tagbar'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'vim-scripts/taglist.vim'
+Bundle 'tpope/vim-rails.git'
 
 filetype plugin indent on
