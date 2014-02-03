@@ -28,6 +28,7 @@ set undolevels=1000 " use many muchos levels of undo
 set expandtab
 set binary
 set noeol
+set tags=.tags
 
 " Wildmenu completion {{{
 set wildmenu
@@ -71,8 +72,8 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " editing behaviour
-set list
-set listchars=tab:▸\ ,extends:❯,precedes:❮
+" set list
+" set listchars=tab:▸\ ,extends:❯,precedes:❮
 
 " maps
 nnoremap ; :set nohlsearch!<CR>
@@ -80,7 +81,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " -> tabs
 noremap <S-C-Left> :tabprevious<CR>
 noremap <S-C-Right> :tabnext<CR>
-noremap <S-C-CR> :tabnew 
+noremap <S-C-CR> :tabnew
 inoremap <S-C-Left> <Esc>:tabprevious<CR><Insert>
 inoremap <S-C-Right> <Esc>:tabnext<CR><Insert>
 
@@ -98,6 +99,8 @@ cmap w!! w !sudo tee % >/dev/null " w!! for saving as root
 autocmd FileType ruby       set tabstop=2|set shiftwidth=2
 autocmd FileType coffee     set tabstop=2|set shiftwidth=2
 autocmd FileType javascript set tabstop=2|set shiftwidth=2
+autocmd FileType javascript map <buffer> <Leader>R :w<CR>:!/usr/bin/env node % <CR>
+autocmd FileType php        set shiftwidth=4|set expandtab
 
 " Text Bubbling
 " Bubble single lines
@@ -137,5 +140,6 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'majutsushi/tagbar'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-rails.git'
+Bundle 'bronson/vim-trailing-whitespace'
 
 filetype plugin indent on
