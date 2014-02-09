@@ -81,7 +81,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " -> tabs
 noremap <S-C-Left> :tabprevious<CR>
 noremap <S-C-Right> :tabnext<CR>
-noremap <S-C-CR> :tabnew
+noremap <S-C-CR> :tabnew 
 inoremap <S-C-Left> <Esc>:tabprevious<CR><Insert>
 inoremap <S-C-Right> <Esc>:tabnext<CR><Insert>
 
