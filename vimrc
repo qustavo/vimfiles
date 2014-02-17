@@ -85,13 +85,6 @@ noremap <S-C-CR> :tabnew
 inoremap <S-C-Left> <Esc>:tabprevious<CR><Insert>
 inoremap <S-C-Right> <Esc>:tabnext<CR><Insert>
 
-" Bubble single lines
-nmap <C-Up> ddkP
-nmap <C-Down> ddp
-" Bubble multiple lines
-vmap <C-Up> xkP`[V`]
-vmap <C-Down> xp`[V`]
-
 " misc
 cmap w!! w !sudo tee % >/dev/null " w!! for saving as root
 
