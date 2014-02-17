@@ -134,5 +134,6 @@ Bundle 'majutsushi/tagbar'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-rails.git'
 Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'joonty/vdebug.git'
 
 filetype plugin indent on
