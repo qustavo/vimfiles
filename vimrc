@@ -69,6 +69,7 @@ if &t_Co > 2 || has("gui_running")
 
   set colorcolumn=81
   highlight ColorColumn guibg=#202020
+  set showtabline=2 "always show tab bar
 endif
 
 " editing behaviour
