@@ -82,7 +82,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " -> tabs
 noremap <S-C-Left> :tabprevious<CR>
 noremap <S-C-Right> :tabnext<CR>
-noremap <S-C-CR> :tabnew 
+noremap <S-C-CR> :tabnew<SPACE>
 inoremap <S-C-Left> <Esc>:tabprevious<CR><Insert>
 inoremap <S-C-Right> <Esc>:tabnext<CR><Insert>
 
@@ -117,6 +117,27 @@ map <C-n> :NERDTreeToggle<CR> " Ctrl-n
 " Q. How can I close vim if the only window left open is a NERDTree?
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Airline
+" Need  aur/powerline-fonts-git installed to run nice icons
+set laststatus=2
+set noshowmode
+let g:airline#extensions#branch#enabled = 1
+" let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#syntastic#enabled = 1
+if has('gui_running')
+    let g:airline_powerline_fonts = 1
+else
+    let g:airline_powerline_fonts = 0
+    let g:airline_left_sep=''
+    let g:airline_right_sep=''
+endif
+
+" Syntastic
+
+" When set to 1 the error window will be automatically opened when errors are
+" detected, and closed when none are detected.
+let g:syntastic_auto_loc_list=1
+
 " Vundle
 " ---
 " Vundle Requirements
@@ -136,5 +157,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-rails.git'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'joonty/vdebug.git'
+Bundle 'scrooloose/syntastic'
+Bundle 'Lokaltog/vim-easymotion'
 
 filetype plugin indent on
