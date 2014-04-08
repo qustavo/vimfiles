@@ -14,7 +14,7 @@ set incsearch " show search matches as you type
 set nobackup
 set noswapfile
 set nowrap " don't wrap lines
-set number
+set relativenumber
 set shiftround " use multiple of shiftwidth when indenting with '<' and '>'
 set shiftwidth=4 " number of spaces to use for autoindenting
 set showmatch " set show matching parenthesis
@@ -45,6 +45,10 @@ set wildignore+=*.luac " Lua byte code
 set wildignore+=migrations " Django migrations
 set wildignore+=*.pyc " Python byte code
 " }}}
+
+" Numbering
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 
 " Save when losing focus
 au FocusLost * :wa
