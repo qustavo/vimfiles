@@ -44,6 +44,7 @@ set wildignore+=*.DS_Store " OSX bullshit
 set wildignore+=*.luac " Lua byte code
 set wildignore+=migrations " Django migrations
 set wildignore+=*.pyc " Python byte code
+set wildignorecase " ignore case for searching files
 " }}}
 
 " Numbering
