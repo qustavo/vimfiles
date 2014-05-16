@@ -160,5 +160,6 @@ Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'joonty/vdebug.git'
 Bundle 'scrooloose/syntastic'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on
