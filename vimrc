@@ -91,7 +91,7 @@ inoremap <S-C-Right> <Esc>:tabnext<CR><Insert>
 cmap w!! w !sudo tee % >/dev/null " w!! for saving as root
 
 " Custom settings depending on FileType
-autocmd FileType ruby       set tabstop=2|set shiftwidth=2
+autocmd FileType ruby       set tabstop=2|set shiftwidth=2|set expandtab
 autocmd FileType coffee     set tabstop=2|set shiftwidth=2
 autocmd FileType javascript set tabstop=2|set shiftwidth=2
 autocmd FileType javascript map <buffer> <Leader>R :w<CR>:!/usr/bin/env node % <CR>
@@ -143,24 +143,26 @@ let g:syntastic_auto_loc_list=1
 " ---
 " Vundle Requirements
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " My Vundles
-Bundle 'gmarik/vundle'
-Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-bufferline'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'majutsushi/tagbar'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-rails.git'
-Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'joonty/vdebug.git'
-Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-bufferline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'majutsushi/tagbar'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-rails.git'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'joonty/vdebug.git'
+Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'derekwyatt/vim-scala'
 
+call vundle#end()
 filetype plugin indent on
