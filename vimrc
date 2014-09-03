@@ -29,6 +29,9 @@ set expandtab
 set binary
 set noeol
 set tags=.tags
+" splits
+set splitbelow
+set splitright
 
 " Wildmenu completion {{{
 set wildmenu
@@ -79,7 +82,7 @@ endif
 
 " maps
 nnoremap ; :set nohlsearch!<CR>
-nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 " -> tabs
 noremap <S-C-Left> :tabprevious<CR>
 noremap <S-C-Right> :tabnext<CR>
@@ -96,6 +99,7 @@ autocmd FileType coffee     set tabstop=2|set shiftwidth=2
 autocmd FileType javascript set tabstop=2|set shiftwidth=2
 autocmd FileType javascript map <buffer> <Leader>R :w<CR>:!/usr/bin/env node % <CR>
 autocmd FileType php        set shiftwidth=4|set expandtab
+autocmd FileType go         set tabstop=8|set shiftwidth=8|set noexpandtab
 
 " Text Bubbling
 " Bubble single lines
@@ -139,6 +143,20 @@ endif
 " detected, and closed when none are detected.
 let g:syntastic_auto_loc_list=1
 
+" php-refactoring
+let g:php_refactor_command='php ~/bin/refactor.phar'
+
+" vim-go
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+
 " Vundle
 " ---
 " Vundle Requirements
@@ -163,6 +181,15 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'rking/ag.vim'
+Plugin 'vim-php/vim-php-refactoring'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'fatih/vim-go'
+
 
 call vundle#end()
 filetype plugin indent on
