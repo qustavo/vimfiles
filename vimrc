@@ -50,6 +50,10 @@ set wildignore+=*.pyc " Python byte code
 set wildignorecase " ignore case for searching files
 " }}}
 
+" CtrlP {{{
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|vendor|node_modules$'
+" }}}
+
 " Save when losing focus
 au FocusLost * :wa
 
@@ -84,11 +88,14 @@ endif
 nnoremap ; :set nohlsearch!<CR>
 nnoremap <F8> :TagbarToggle<CR>
 " -> tabs
-noremap <S-C-Left> :tabprevious<CR>
-noremap <S-C-Right> :tabnext<CR>
-noremap <S-C-CR> :tabnew<SPACE>
-inoremap <S-C-Left> <Esc>:tabprevious<CR><Insert>
-inoremap <S-C-Right> <Esc>:tabnext<CR><Insert>
+"noremap <S-C-Left> :tabprevious<CR>
+"noremap <S-C-Right> :tabnext<CR>
+"noremap <S-C-CR> :tabnew<SPACE>
+"inoremap <S-C-Left> <Esc>:tabprevious<CR><Insert>
+"inoremap <S-C-Right> <Esc>:tabnext<CR><Insert>
+
+" -> buffers
+noremap <S-C-CR> :BufExplorerHorizontalSplit<CR>
 
 " misc
 cmap w!! w !sudo tee % >/dev/null " w!! for saving as root
@@ -143,9 +150,6 @@ endif
 " detected, and closed when none are detected.
 let g:syntastic_auto_loc_list=1
 
-" php-refactoring
-let g:php_refactor_command='php ~/bin/refactor.phar'
-
 " vim-go
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
@@ -155,7 +159,6 @@ au FileType go nmap gd <Plug>(go-def)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-
 
 " Vundle
 " ---
@@ -173,6 +176,7 @@ Plugin 'fatih/vim-go'
 Plugin 'garbas/vim-snipmate'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'honza/vim-snippets'
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'joonty/vdebug.git'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
@@ -182,12 +186,10 @@ Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails.git'
 
 call vundle#end()
 filetype plugin indent on
