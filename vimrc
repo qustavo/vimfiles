@@ -120,15 +120,6 @@ vmap <C-Down> xp`[V`]
 set noshowmode
 set laststatus=2
 
-" NERDTree
-"
-" Q. How can I open a NERDTree automatically when vim starts up if no files were specified?
-autocmd vimenter * if !argc() | NERDTree | endif
-" Q. How can I map a specific key or shortcut to open NERDTree?
-map <C-n> :NERDTreeToggle<CR> " Ctrl-n
-" Q. How can I close vim if the only window left open is a NERDTree?
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 " Airline
 " Need  aur/powerline-fonts-git installed to run nice icons
 set laststatus=2
@@ -185,7 +176,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'mbbill/undotree'
 Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'terryma/vim-multiple-cursors'
