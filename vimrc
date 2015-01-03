@@ -85,7 +85,7 @@ endif
 " set listchars=tab:▸\ ,extends:❯,precedes:❮
 
 " maps
-nnoremap ; :set nohlsearch!<CR>
+nnoremap <CR> :set nohlsearch!<CR>
 nnoremap <F8> :TagbarToggle<CR>
 " -> tabs
 "noremap <S-C-Left> :tabprevious<CR>
