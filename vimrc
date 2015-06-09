@@ -75,7 +75,7 @@ if &t_Co > 2 || has("gui_running")
   set cursorline " highlight current line
   highlight CursorLine guibg=#003853 ctermbg=24 gui=none cterm=none " switch syntax highlighting on, when the terminal has colors
 
-  set colorcolumn=81
+  set colorcolumn=121
   highlight ColorColumn guibg=#202020
   set showtabline=2 "always show tab bar
 endif
