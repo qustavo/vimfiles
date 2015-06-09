@@ -135,6 +135,12 @@ else
     let g:airline_right_sep=''
 endif
 
+" Tomato
+let g:tomato#show_clock = 1
+let g:tomato#show_count_down = 1
+let g:tomato#remind = "☻"
+let g:tomato#restinfo = "☺"
+
 " Syntastic
 
 " When set to 1 the error window will be automatically opened when errors are
@@ -209,6 +215,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Zuckonit/vim-airline-tomato'
 
 call vundle#end()
 filetype plugin indent on
