@@ -67,12 +67,6 @@ set nofoldenable
 " maps
 nnoremap <CR> :set nohlsearch!<CR>
 nnoremap <F8> :TagbarToggle<CR>
-" -> tabs
-"noremap <S-C-Left> :tabprevious<CR>
-"noremap <S-C-Right> :tabnext<CR>
-"noremap <S-C-CR> :tabnew<SPACE>
-"inoremap <S-C-Left> <Esc>:tabprevious<CR><Insert>
-"inoremap <S-C-Right> <Esc>:tabnext<CR><Insert>
 
 " -> buffers
 noremap <S-C-CR> :BufExplorerHorizontalSplit<CR>
