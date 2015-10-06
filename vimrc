@@ -64,26 +64,6 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 
-colorscheme pablo
-if &t_Co > 2 || has("gui_running")
-  colorscheme moria
-
-   " switch syntax highlighting on, when the terminal has colors
-  syntax on
-  set background=dark
-  set t_Co=256 " 256 color mode
-  set cursorline " highlight current line
-  highlight CursorLine guibg=#003853 ctermbg=24 gui=none cterm=none " switch syntax highlighting on, when the terminal has colors
-
-  set colorcolumn=121
-  highlight ColorColumn guibg=#202020
-  set showtabline=2 "always show tab bar
-endif
-
-" editing behaviour
-" set list
-" set listchars=tab:▸\ ,extends:❯,precedes:❮
-
 " maps
 nnoremap <CR> :set nohlsearch!<CR>
 nnoremap <F8> :TagbarToggle<CR>
@@ -194,6 +174,7 @@ call vundle#begin()
 
 " My Vundles
 Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'editorconfig/editorconfig-vim'
@@ -220,3 +201,9 @@ Plugin 'Zuckonit/vim-airline-tomato'
 
 call vundle#end()
 filetype plugin indent on
+
+" colors
+let g:solarized_termcolors=256
+syntax enable
+set background=dark
+colorscheme solarized
