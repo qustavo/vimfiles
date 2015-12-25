@@ -1,3 +1,42 @@
+" Vundle
+" ---
+" Vundle Requirements
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" My Vundles
+Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'evidens/vim-twig'
+Plugin 'fatih/vim-go'
+Plugin 'garbas/vim-snipmate'
+Plugin 'garyburd/go-explorer'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'honza/vim-snippets'
+Plugin 'justincampbell/vim-eighties'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kylef/apiblueprint.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'mbbill/undotree'
+Plugin 'mxw/vim-jsx.git'
+" Plugin 'osyo-manga/vim-over'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+" Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+filetype plugin indent on
+
 " basic settings
 set nocompatible
 set autoindent " always set autoindenting on
@@ -32,6 +71,9 @@ set tags=.tags
 " splits
 set splitbelow
 set splitright
+" Status bar
+set noshowmode
+set laststatus=2
 
 " Wildmenu completion {{{
 set wildmenu
@@ -50,14 +92,16 @@ set wildignore+=*.pyc " Python byte code
 set wildignorecase " ignore case for searching files
 " }}}
 
-" CtrlP {{{
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|vendor|node_modules$'
-" }}}
 
-" Save when losing focus
-au FocusLost * :wa
+" Autocmds
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-""
+autocmd FileType ruby       set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType coffee     set tabstop=2|set shiftwidth=2
+autocmd FileType javascript set tabstop=2|set shiftwidth=2
+autocmd FileType php        set shiftwidth=4|set expandtab
+autocmd FileType go         set tabstop=8|set shiftwidth=8|set noexpandtab
+
 " folding
 set foldlevel=1
 set foldmethod=indent
@@ -74,14 +118,6 @@ noremap <S-C-CR> :BufExplorerHorizontalSplit<CR>
 " misc
 cmap w!! w !sudo tee % >/dev/null " w!! for saving as root
 
-" Custom settings depending on FileType
-autocmd FileType ruby       set tabstop=2|set shiftwidth=2|set expandtab
-autocmd FileType coffee     set tabstop=2|set shiftwidth=2
-autocmd FileType javascript set tabstop=2|set shiftwidth=2
-autocmd FileType javascript map <buffer> <Leader>R :w<CR>:!/usr/bin/env node % <CR>
-autocmd FileType php        set shiftwidth=4|set expandtab
-autocmd FileType go         set tabstop=8|set shiftwidth=8|set noexpandtab
-
 " Text Bubbling
 " Bubble single lines
 nmap <C-Up> ddkP
@@ -90,9 +126,9 @@ nmap <C-Down> ddp
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 
-" Status bar
-set noshowmode
-set laststatus=2
+" CtrlP {{{
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|vendor|node_modules$'
+" }}}
 
 " Airline
 " Need  aur/powerline-fonts-git installed to run nice icons
@@ -116,80 +152,18 @@ endif
 let g:syntastic_auto_loc_list=1
 
 " vim-go
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-au FileType go nmap gd <Plug>(go-def)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 let g:go_fmt_command = "goimports"
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
 
-" Vundle
-" ---
-" Vundle Requirements
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" My Vundles
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'fatih/vim-go'
-Plugin 'garbas/vim-snipmate'
-Plugin 'garyburd/go-explorer'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'honza/vim-snippets'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'mbbill/undotree'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-
-call vundle#end()
-filetype plugin indent on
-
-" colors
+" colors and cursor
 let g:solarized_termcolors=256
 syntax enable
 set background=dark
 colorscheme solarized
+
+set list
+set listchars=tab:┊\ ,
+hi SpecialKey ctermfg=235 ctermbg=bg
+
+set cursorline
+hi clear CursorLine
+hi CursorLineNR cterm=bold
