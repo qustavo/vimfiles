@@ -10,6 +10,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'evidens/vim-twig'
 Plugin 'fatih/vim-go'
 Plugin 'garbas/vim-snipmate'
@@ -32,6 +33,8 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-erlang/vim-erlang-omnicomplete'
+Plugin 'vim-erlang/vim-erlang-runtime'
 " Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
@@ -101,6 +104,7 @@ autocmd FileType coffee     set tabstop=2|set shiftwidth=2
 autocmd FileType javascript set tabstop=2|set shiftwidth=2
 autocmd FileType php        set shiftwidth=4|set expandtab
 autocmd FileType go         set tabstop=8|set shiftwidth=8|set noexpandtab
+autocmd FileType erlang     set tabstop=2 shiftwidth=2 expandtab
 
 " folding
 set foldlevel=1
