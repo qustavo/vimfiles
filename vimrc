@@ -1,43 +1,45 @@
-" Vundle
-" ---
-" Vundle Requirements
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" VimPlug
+call plug#begin('~/.vim/plugged')
 
-" My Vundles
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'evidens/vim-twig'
-Plugin 'fatih/vim-go'
-Plugin 'garbas/vim-snipmate'
-Plugin 'garyburd/go-explorer'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'honza/vim-snippets'
-Plugin 'justincampbell/vim-eighties'
-Plugin 'kien/ctrlp.vim'
-Plugin 'kylef/apiblueprint.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'mbbill/undotree'
-Plugin 'mxw/vim-jsx.git'
-" Plugin 'osyo-manga/vim-over'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-erlang/vim-erlang-omnicomplete'
-Plugin 'vim-erlang/vim-erlang-runtime'
-" Plugin 'Valloric/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'evidens/vim-twig'
+Plug 'fatih/vim-go'
+Plug 'garbas/vim-snipmate'
+Plug 'garyburd/go-explorer'
+Plug 'gmarik/Vundle.vim'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/gv.vim'
+Plug 'justincampbell/vim-eighties'
+Plug 'kien/ctrlp.vim'
+Plug 'Konfekt/FastFold'
+Plug 'majutsushi/tagbar'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'mbbill/undotree'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/vimproc.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+Plug 'zchee/deoplete-go', {'do': 'make'}
 
-call vundle#end()
+"Plugin 'mxw/vim-jsx.git'
+"Plugin 'elixir-lang/vim-elixir'
+"Plugin 'kylef/apiblueprint.vim'
+"Plugin 'vim-erlang/vim-erlang-omnicomplete'
+"Plugin 'vim-erlang/vim-erlang-runtime'
+
+call plug#end()
+
 filetype plugin indent on
 
 " basic settings
@@ -45,7 +47,7 @@ set nocompatible
 set autoindent " always set autoindenting on
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set copyindent " copy the previous indentation on autoindenting
-set encoding=utf-8
+" set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
 set hidden " hide buffer instead of closing them.
@@ -105,12 +107,20 @@ autocmd FileType javascript set tabstop=2|set shiftwidth=2
 autocmd FileType php        set shiftwidth=4|set expandtab
 autocmd FileType go         set tabstop=8|set shiftwidth=8|set noexpandtab
 autocmd FileType erlang     set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType yaml       set tabstop=2 shiftwidth=2 expandtab
 
 " folding
 set foldlevel=1
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
+
+" Persisteng undo
+if has('persistent_undo')
+    set undolevels=5000
+    set undodir=$HOME/.VIM_UNDO_FILES
+    set undofile
+endif
 
 " maps
 nnoremap <CR> :set nohlsearch!<CR>
@@ -155,9 +165,6 @@ endif
 " detected, and closed when none are detected.
 let g:syntastic_auto_loc_list=1
 
-" vim-go
-let g:go_fmt_command = "goimports"
-
 " colors and cursor
 let g:solarized_termcolors=256
 syntax enable
@@ -171,3 +178,20 @@ hi SpecialKey ctermfg=235 ctermbg=bg
 set cursorline
 hi clear CursorLine
 hi CursorLineNR cterm=bold
+
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_term_enabled = 1
+let g:go_fmt_fail_silently = 0
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = ['go']
+let g:go_list_type = "quickfix"
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
