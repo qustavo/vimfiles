@@ -1,16 +1,16 @@
 " VimPlug
 call plug#begin('~/.vim/plugged')
 
+Plug 'elmcast/elm-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'evidens/vim-twig'
+Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
-Plug 'garbas/vim-snipmate'
+"Plug 'garbas/vim-snipmate'
 Plug 'garyburd/go-explorer'
 Plug 'gmarik/Vundle.vim'
-Plug 'honza/vim-snippets'
 Plug 'junegunn/gv.vim'
 Plug 'justincampbell/vim-eighties'
 Plug 'kien/ctrlp.vim'
@@ -21,25 +21,20 @@ Plug 'mbbill/undotree'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/vimproc.vim'
+Plug 'SirVer/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'vimwiki/vimwiki'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
-Plug 'zchee/deoplete-go', {'do': 'make'}
+Plug 'jodosha/vim-godebug'
 
-"Plugin 'mxw/vim-jsx.git'
-"Plugin 'elixir-lang/vim-elixir'
-"Plugin 'kylef/apiblueprint.vim'
-"Plugin 'vim-erlang/vim-erlang-omnicomplete'
-"Plugin 'vim-erlang/vim-erlang-runtime'
 
 call plug#end()
-
 filetype plugin indent on
 
 " basic settings
@@ -47,6 +42,7 @@ set nocompatible
 set autoindent " always set autoindenting on
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set copyindent " copy the previous indentation on autoindenting
+set updatetime=300
 " set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf8,prc
@@ -79,6 +75,8 @@ set splitright
 " Status bar
 set noshowmode
 set laststatus=2
+" Mouse
+if has('mouse') | set mouse=a | endif
 
 " Wildmenu completion {{{
 set wildmenu
@@ -140,6 +138,11 @@ nmap <C-Down> ddp
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 
+" Snip config
+" Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 " CtrlP {{{
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|vendor|node_modules$'
 " }}}
@@ -163,7 +166,14 @@ endif
 
 " When set to 1 the error window will be automatically opened when errors are
 " detected, and closed when none are detected.
-let g:syntastic_auto_loc_list=1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " colors and cursor
 let g:solarized_termcolors=256
@@ -180,6 +190,7 @@ hi clear CursorLine
 hi CursorLineNR cterm=bold
 
 " vim-go
+let g:go_auto_type_info = 1
 let g:go_fmt_command = "goimports"
 let g:go_term_enabled = 1
 let g:go_fmt_fail_silently = 0
@@ -193,5 +204,5 @@ let g:syntastic_go_checkers = ['go']
 let g:go_list_type = "quickfix"
 
 " Deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
+"let g:deoplete#enable_at_startup = 1
+"call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
