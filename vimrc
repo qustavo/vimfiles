@@ -1,26 +1,21 @@
 " VimPlug
 call plug#begin('~/.vim/plugged')
 
-Plug 'elmcast/elm-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
-"Plug 'garbas/vim-snipmate'
 Plug 'garyburd/go-explorer'
 Plug 'gmarik/Vundle.vim'
 Plug 'junegunn/gv.vim'
 Plug 'justincampbell/vim-eighties'
 Plug 'kien/ctrlp.vim'
-Plug 'Konfekt/FastFold'
 Plug 'majutsushi/tagbar'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'mbbill/undotree'
-Plug 'rking/ag.vim'
-Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
 Plug 'Shougo/vimproc.vim'
 Plug 'SirVer/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
@@ -28,11 +23,17 @@ Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'vimwiki/vimwiki'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
-Plug 'jodosha/vim-godebug'
-
+" Plug 'w0rp/ale'
+" Plug 'elmcast/elm-vim'
+" Plug 'elixir-lang/vim-elixir'
+" Plug 'garbas/vim-snipmate'
+" Plug 'Konfekt/FastFold'
+" Plug 'rking/ag.vim'
+" Plug 'vimwiki/vimwiki'
+" Plug 'jodosha/vim-godebug'
+" Plug 'othree/html5.vim'
 
 call plug#end()
 filetype plugin indent on
@@ -101,11 +102,12 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 autocmd FileType ruby       set tabstop=2|set shiftwidth=2|set expandtab
 autocmd FileType coffee     set tabstop=2|set shiftwidth=2
-autocmd FileType javascript set tabstop=2|set shiftwidth=2
+autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType php        set shiftwidth=4|set expandtab
 autocmd FileType go         set tabstop=8|set shiftwidth=8|set noexpandtab
 autocmd FileType erlang     set tabstop=2 shiftwidth=2 expandtab
-autocmd FileType yaml       set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType yaml       setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+autocmd FileType html       set tabstop=2 shiftwidth=2 expandtab
 
 " folding
 set foldlevel=1
@@ -201,7 +203,13 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:syntastic_go_checkers = ['go']
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_list_type = "quickfix"
+let g:go_template_autocreate = 0
+
+" Ale
+let g:ale_linters = {'go': ['go build', 'golint', 'gofmt', 'go vet']}
+let g:airline#extensions#ale#enabled = 1
 
 " Deoplete
 "let g:deoplete#enable_at_startup = 1
